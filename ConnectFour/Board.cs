@@ -7,6 +7,7 @@ public class Board
     public const char EMPTY = '_';
     private const int ROWS = 6;
     private const int COLS = 7;
+    private const int CONNECT_HOW_MANY = 4;
     public Board()
     {
         fields = new char[ROWS][];
@@ -75,7 +76,7 @@ public class Board
     {
         char[] row = GetRow(r);
         var line = new string(row);
-        var win = new string(player, 4);
+        var win = new string(player, CONNECT_HOW_MANY);
         if (line.Contains(win))
         {
             return player;
@@ -86,7 +87,7 @@ public class Board
     {
         char[] col = GetCol(c);
         var line = new string(col);
-        var win = new string(player, 4);
+        var win = new string(player, CONNECT_HOW_MANY);
         if (line.Contains(win))
         {
             return player;
@@ -99,7 +100,7 @@ public class Board
         var diagonals = GetDiagonals(r, c);
         var diagUp = new string(diagonals[0]);
         var diagDown = new string(diagonals[1]);
-        var win = new string(player, 4);
+        var win = new string(player, CONNECT_HOW_MANY);
         if (diagUp.Contains(win) || diagDown.Contains(win))
         {
             return player;
@@ -129,9 +130,8 @@ public class Board
 
     private char[][] GetDiagonals(int r, int c)
     {
-        // Woe to thee, who entered here, for you dug too deep and unearthed
-        // daemons of the otherworld long-forgotten by mankind!
-        // https://youtu.be/TDIr9on8Rhw https://youtu.be/Mue6Vc_T9Ds
+        // Woe to thee, who entered here, for you dug too deep and unearthed daemons of the otherworld!
+        // https://youtu.be/TDIr9on8Rhw?t=18 https://youtu.be/Mue6Vc_T9Ds https://youtu.be/1T14eOUf-28?t=7
         var raising = new List<char>();
         var falling = new List<char>();
         for (int i = r, j = c; i >= 0 && j < COLS; i--, j++)
