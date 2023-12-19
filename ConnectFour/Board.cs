@@ -8,6 +8,7 @@ public class Board
     private const int ROWS = 6;
     private const int COLS = 7;
     private const int CONNECT_HOW_MANY = 4;
+
     public Board()
     {
         fields = new char[ROWS][];
