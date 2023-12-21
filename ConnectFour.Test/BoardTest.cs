@@ -3,8 +3,13 @@ namespace ConnectFour.Test;
 public class BoardTest
 {
     [Fact]
-    public void TestNothing()
+    public void TestInvalidMoveReturnsInvalidPlaceholder()
     {
-        Assert.Equal(2, 1 + 1);
+        int invalidColumnMove = 7;
+        Board board = new Board();
+
+        int result = board.MakeMove('x', invalidColumnMove);
+
+        Assert.Equal(-1, result);
     }
 }
