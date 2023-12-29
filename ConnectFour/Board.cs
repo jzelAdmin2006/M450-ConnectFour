@@ -42,7 +42,7 @@ public class Board
 
     public int MakeMove(char player, int column)
     {
-        if (column >= 0 && column < COLS)
+        if (ColIsValid(column))
         {
             for (var r = fields.Length - 1; r >= 0; r--)
             {
@@ -58,20 +58,23 @@ public class Board
 
     public char Winner(char player, int row, int col)
     {
-        var horizontal = HorizontalWinner(player, row);
-        if (horizontal != EMPTY)
+        if (ColIsValid(col) && RowIsValid(row))
         {
-            return horizontal;
-        }
-        var vertical = VerticalWinner(player, col);
-        if (vertical != EMPTY)
-        {
-            return vertical;
-        }
-        var diagonal = DiagonalWinner(player, row, col);
-        if (diagonal != EMPTY)
-        {
-            return diagonal;
+            var horizontal = HorizontalWinner(player, row);
+            if (horizontal != EMPTY)
+            {
+                return horizontal;
+            }
+            var vertical = VerticalWinner(player, col);
+            if (vertical != EMPTY)
+            {
+                return vertical;
+            }
+            var diagonal = DiagonalWinner(player, row, col);
+            if (diagonal != EMPTY)
+            {
+                return diagonal;
+            }
         }
         return EMPTY;
     }
@@ -155,5 +158,15 @@ public class Board
             falling.Add(fields[i][j]);
         }
         return new char[][] { raising.ToArray(), falling.ToArray() };
+    }
+
+    private static bool ColIsValid(int column)
+    {
+        return column >= 0 && column < COLS;
+    }
+
+    private static bool RowIsValid(int row)
+    {
+        return row >= 0 && row < ROWS;
     }
 }

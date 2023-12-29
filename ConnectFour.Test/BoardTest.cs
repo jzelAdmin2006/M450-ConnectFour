@@ -23,4 +23,42 @@ public class BoardTest
 
         Assert.Equal(-1, result);
     }
+
+    [Theory]
+    [InlineData(-1)]
+    [InlineData(6)]
+    public void TestInvalidWinnerRowReturnsEmpty(int invalidRow)
+    {
+        Board board = new Board();
+
+        char result = board.Winner('x', invalidRow, 0);
+
+        Assert.Equal(Board.EMPTY, result);
+    }
+
+    [Theory]
+    [InlineData(-1)]
+    [InlineData(7)]
+    public void TestInvalidWinnerColumnReturnsEmpty(int invalidCol)
+    {
+        Board board = new Board();
+
+        char result = board.Winner('x', 0, invalidCol);
+
+        Assert.Equal(Board.EMPTY, result);
+    }
+
+    [Theory]
+    [InlineData(-1, -1)]
+    [InlineData(-1, 7)]
+    [InlineData(6, -1)]
+    [InlineData(6, 7)]
+    public void TestInvalidWinnerRowColumnReturnsEmpty(int invalidRow, int invalidCol)
+    {
+        Board board = new Board();
+
+        char result = board.Winner('x', invalidRow, invalidCol);
+
+        Assert.Equal(Board.EMPTY, result);
+    }
 }
