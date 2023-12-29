@@ -61,4 +61,21 @@ public class BoardTest
 
         Assert.Equal(Board.EMPTY, result);
     }
+
+    [Fact]
+    public void TestTwoOverlappingDiagonalsEachNotFourWinnerReturnsEmpty()
+    {
+        Board board = new Board();
+
+        board.MakeMove('x', 2);
+        board.MakeMove('o', 3);
+        board.MakeMove('x', 4);
+        board.MakeMove('o', 2);
+        board.MakeMove('x', 3);
+        board.MakeMove('o', 4);
+        board.MakeMove('x', 2);
+        char result = board.Winner('x', 3, 2);
+
+        Assert.Equal(Board.EMPTY, result);
+    }
 }
