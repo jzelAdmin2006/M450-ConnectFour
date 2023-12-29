@@ -12,4 +12,15 @@ public class BoardTest
 
         Assert.Equal(-1, result);
     }
+
+    [Fact]
+    public void TestDifferentInvalidMoveReturnsInvalidPlaceholder()
+    {
+        int invalidColumnMove = -1;
+        Board board = new Board();
+
+        int result = board.MakeMove('x', invalidColumnMove);
+
+        Assert.Equal(-1, result);
+    }
 }
