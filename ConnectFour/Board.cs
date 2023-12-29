@@ -165,6 +165,6 @@ public class Board
 
     private static bool RowIsValid(int row)
     {
-        return row >= 0 && row < ROWS;
+        return row >= 1 && row < ROWS;
     }
 }

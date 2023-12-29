@@ -25,7 +25,7 @@ public class BoardTest
     }
 
     [Theory]
-    [InlineData(-1)]
+    [InlineData(0)]
     [InlineData(6)]
     public void TestInvalidWinnerRowReturnsEmpty(int invalidRow)
     {
@@ -49,8 +49,8 @@ public class BoardTest
     }
 
     [Theory]
-    [InlineData(-1, -1)]
-    [InlineData(-1, 7)]
+    [InlineData(0, -1)]
+    [InlineData(0, 7)]
     [InlineData(6, -1)]
     [InlineData(6, 7)]
     public void TestInvalidWinnerRowColumnReturnsEmpty(int invalidRow, int invalidCol)
