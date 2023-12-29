@@ -42,12 +42,15 @@ public class Board
 
     public int MakeMove(char player, int column)
     {
-        for (var r = fields.Length - 1; r >= 0; r--)
+        if (column >= 0 && column < COLS)
         {
-            if (fields[r][column] == EMPTY)
+            for (var r = fields.Length - 1; r >= 0; r--)
             {
-                fields[r][column] = player;
-                return r;
+                if (fields[r][column] == EMPTY)
+                {
+                    fields[r][column] = player;
+                    return r;
+                }
             }
         }
         return -1;
